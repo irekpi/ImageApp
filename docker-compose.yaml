@@ -1,0 +1,21 @@
+version: '3.8'
+services:
+  app:
+    container_name: app
+    build:
+      context: .
+      dockerfile: .docker/Dockerfile
+    restart: on-failure
+    volumes:
+      - ./:/app
+    command: poetry run uvicorn app.main:app --host 0.0.0.0 --reload
+    #    ports:
+    #      - '8000:8000'
+    network_mode: host #Used only for azurite connection testing. In normal project ports should be unlocked
+  azurite:
+    image: mcr.microsoft.com/azure-storage/azurite
+    container_name: azurite
+    volumes:
+      - /:/opt/azurite/folder
+    ports:
+      - 10000:10000
