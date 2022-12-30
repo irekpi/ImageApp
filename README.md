@@ -39,7 +39,7 @@ Docker
     $ make build       # Build or rebuild services (force-recreate, no-cache and others omitted)
 Fake Blob Container creation:
 
-    $ make create_blob  # Django Migrations
+    $ make create_blob  # Creates fake blob container for testing purposes
 
 Tests
     
